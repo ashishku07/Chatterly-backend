@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const connectDB = require("./config/databse");
 const app = express();
@@ -6,7 +7,7 @@ const user = require("./models/user");
 
 app.use(express.json());
 
-// API for the signup
+// SignUp the User api call
 app.post("/signup", async (req, res) => {
   // creating a new instance of the user model
   const user = new User(req.body);
@@ -34,13 +35,26 @@ app.get("/user", async (req, res) => {
 });
 
 // FEED API - Get all the user from the database
-
 app.get("/feed", async (req, res) => {
   try {
     const users = await User.find({});
     res.send(users);
   } catch (err) {
     res.status(400).send("something went wrong" + err.message);
+  }
+});
+
+// Delete the User Api
+app.delete("/user", async (req, res) => {
+  const userId = req.body.userId;
+  try {
+    const user = await User.findByIdAndDelete({ _id: userId });
+
+    //const user = await User.findByIdAndDelete({_id:userId});
+
+    res.send("User deleted successfully");
+  } catch (err) {
+    res.status(400).send("Something went wrong" + err.message);
   }
 });
 
