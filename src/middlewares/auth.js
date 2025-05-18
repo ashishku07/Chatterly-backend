@@ -10,7 +10,7 @@ const userAuth = async (req, res, next) => {
       return res.status(401).send("Please Login or Signup");
     }
 
-    // Remove await - jwt.verify is synchronous
+    // jwt.verify is synchronous
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     // Log to debug the decoded token structure
