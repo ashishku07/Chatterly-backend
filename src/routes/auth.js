@@ -34,10 +34,10 @@ authRouter.post("/signup", async (req, res) => {
       lastName,
       emailId,
       password: passwordHash,
-      age,
-      gender,
-      about,
-      skills,
+      // age,
+      // gender,
+      // about,
+      // skills,
     });
     const savedUser = await user.save();
     const token = await savedUser.getjwt();
