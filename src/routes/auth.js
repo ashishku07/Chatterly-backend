@@ -30,7 +30,7 @@ authRouter.post("/signup", async (req, res) => {
     }
 
     const user = new User({
-      // firstName,
+      firstName,
       lastName,
       emailId,
       password: passwordHash,
