@@ -5,6 +5,7 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config({});
 const cors = require("cors");
+const http = require("http");
 
 app.use(
   cors({
@@ -21,16 +22,22 @@ const authRouter = require("./routes/auth");
 const profileRouter = require("./routes/profile");
 const requestRouter = require("./routes/request");
 const userRouter = require("./routes/user");
+const initializeSocket = require("./utils/socket");
+const chatRouter = require("./routes/chat");
 
 app.use("/", authRouter);
 app.use("/", profileRouter);
 app.use("/", requestRouter);
 app.use("/", userRouter);
+app.use("/api", chatRouter);
+
+const server = http.createServer(app);
+initializeSocket(server);
 
 //database connect before server
 connectDB().then(() => {
   try {
-    app.listen(process.env.PORT, () => {
+    server.listen(process.env.PORT, () => {
       console.log(`Server running on ` + process.env.PORT);
     });
   } catch (error) {
