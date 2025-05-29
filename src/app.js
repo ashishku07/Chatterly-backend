@@ -24,12 +24,14 @@ const requestRouter = require("./routes/request");
 const userRouter = require("./routes/user");
 const initializeSocket = require("./utils/socket");
 const chatRouter = require("./routes/chat");
+const smartMatchRouter = require("./routes/smartMatch");
 
 app.use("/", authRouter);
 app.use("/", profileRouter);
 app.use("/", requestRouter);
 app.use("/", userRouter);
 app.use("/api", chatRouter);
+app.use("/api", smartMatchRouter);
 
 const server = http.createServer(app);
 initializeSocket(server);
