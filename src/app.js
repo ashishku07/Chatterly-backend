@@ -3,7 +3,6 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const http = require("http");
-const path = require("path");
 
 const connectDB = require("./config/database");
 const initializeSocket = require("./utils/socket");
@@ -17,6 +16,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173", // Dev (local)
   "https://devtinder.rocks", // Prod
+  "http://3.133.145.153", // Your EC2 IP
 ];
 
 app.use(
@@ -35,10 +35,6 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-// ========== STATIC FILES ==========
-// Serve static files from your built frontend
-app.use(express.static(path.join(__dirname, "dist")));
-
 // ========== ROUTES ==========
 const authRouter = require("./routes/auth");
 const profileRouter = require("./routes/profile");
@@ -53,23 +49,6 @@ app.use("/", requestRouter);
 app.use("/", userRouter);
 app.use("/api", chatRouter);
 app.use("/api", smartMatchRouter);
-
-// ========== SPA FALLBACK ==========
-// Handle client-side routing - send index.html for all non-API routes
-app.get("*", (req, res) => {
-  // Don't serve index.html for API routes
-  if (
-    req.path.startsWith("/api/") ||
-    req.path.startsWith("/auth/") ||
-    req.path.startsWith("/profile/") ||
-    req.path.startsWith("/request/") ||
-    req.path.startsWith("/user/")
-  ) {
-    return res.status(404).json({ error: "Route not found" });
-  }
-
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
-});
 
 // ========== START SERVER ==========
 const server = http.createServer(app);
