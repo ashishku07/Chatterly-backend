@@ -1,13 +1,22 @@
 const express = require("express");
-const connectDB = require("./config/database");
-const cookieParser = require("cookie-parser");
-const app = express();
 const dotenv = require("dotenv");
-dotenv.config({});
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const http = require("http");
 
-const allowedOrigins = ["http://localhost:5173", "https://devtinder.rocks"];
+const connectDB = require("./config/database");
+const initializeSocket = require("./utils/socket");
+
+// Load environment variables
+dotenv.config();
+
+const app = express();
+
+// Allow requests from frontend (both local and production)
+const allowedOrigins = [
+  "http://localhost:5173", // Dev (local)
+  "https://devtinder.rocks", // Prod
+];
 
 app.use(
   cors({
@@ -25,12 +34,11 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-//routes
+// ========== ROUTES ==========
 const authRouter = require("./routes/auth");
 const profileRouter = require("./routes/profile");
 const requestRouter = require("./routes/request");
 const userRouter = require("./routes/user");
-const initializeSocket = require("./utils/socket");
 const chatRouter = require("./routes/chat");
 const smartMatchRouter = require("./routes/smartMatch");
 
@@ -41,16 +49,12 @@ app.use("/", userRouter);
 app.use("/api", chatRouter);
 app.use("/api", smartMatchRouter);
 
+// ========== START SERVER ==========
 const server = http.createServer(app);
 initializeSocket(server);
 
-//database connect before server
 connectDB().then(() => {
-  try {
-    server.listen(process.env.PORT, () => {
-      console.log(`Server running on ` + process.env.PORT);
-    });
-  } catch (error) {
-    console.log(error);
-  }
+  server.listen(process.env.PORT || 3000, () => {
+    console.log(`🚀 Server running on port ${process.env.PORT || 3000}`);
+  });
 });
