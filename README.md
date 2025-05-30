@@ -37,7 +37,7 @@ DevTinder is a developer-connection platform designed to help developers discove
 
 ```bash
 git clone https://github.com/Shams261/DevTinder.git
-cd devtinder-backend
+cd DevTinder
 ```
 
 ### 2. Install dependencies
