@@ -1,4 +1,4 @@
-# DevTinders 🚀
+# DevTinder 🚀
 
 DevTinder is a developer-connection platform designed to help developers discover, connect, and collaborate with others who share similar technical skills and interests. This repository contains the backend microservice powered by Node.js, Express, MongoDB, and OpenAI integration for smart matchmaking and onboarding assistance.
 
@@ -43,6 +43,7 @@ cd DevTinder
 ```
 
 ### 2. Install dependencies
+
 ```bash
 npm install
 ```
@@ -61,33 +62,34 @@ OPENAI_API_KEY=your_openai_api_key
 ```bash
 npm run dev
 ```
+
 ## 📚 API Endpoints
 
 ### 🔐 Authentication
 
-- **POST** `/signup` – Register new user  
-- **POST** `/login` – User login  
-- **POST** `/logout` – User logout  
+- **POST** `/signup` – Register new user
+- **POST** `/login` – User login
+- **POST** `/logout` – User logout
 
 ### 👤 Profile
 
-- **GET** `/profile/view` – View profile  
-- **POST** `/profile/edit` – Edit profile  
+- **GET** `/profile/view` – View profile
+- **POST** `/profile/edit` – Edit profile
 
 ### 🤝 Connections
 
-- **POST** `/request/send/:status/:toUserId` – Send connection request  
-- **POST** `/request/review/:status/:requestId` – Review received request  
-- **GET** `/user/requests/recieved` – View received requests  
-- **GET** `/user/connections` – View accepted connections  
+- **POST** `/request/send/:status/:toUserId` – Send connection request
+- **POST** `/request/review/:status/:requestId` – Review received request
+- **GET** `/user/requests/recieved` – View received requests
+- **GET** `/user/connections` – View accepted connections
 
 ### 🧠 Smart Match
 
-- **GET** `/api/smart-matches` – Get AI-powered matches  
+- **GET** `/api/smart-matches` – Get AI-powered matches
 
 ### 💬 Chat
 
-- **GET** `/api/chat/:targetUserId` – Get chat history  
+- **GET** `/api/chat/:targetUserId` – Get chat history
 
 ### 🤖 AI Assistant
 
@@ -113,29 +115,32 @@ This backend is built to work seamlessly with the [DevTinder Frontend](https://g
 This backend project was built while learning from:
 
 - [Namaste Node.js by Akshay Saini ](https://namastedev.com/learn/namaste-node)
-A highly recommended series for understanding Node.js fundamentals and backend architecture.
+  A highly recommended series for understanding Node.js fundamentals and backend architecture.
 
 ## 🤝 Contributing
 
 Contributions are welcome! If you'd like to improve this project, follow these steps:
 
-1. **Fork** the repository  
-2. **Clone** your fork locally  
-3. Create your feature branch:  
+1. **Fork** the repository
+2. **Clone** your fork locally
+3. Create your feature branch:
    ```bash
    git checkout -b feature/amazing-feature
    ```
-4.	Make your changes and commit:
-   ```bash
-   git commit -m "Add some amazing feature"
-   ```
-5.	Push to your fork:
-   ```bash
-   git push origin feature/amazing-feature
-   ```
+4. Make your changes and commit:
 
-  6.	Open a Pull Request and describe your changes
+```bash
+git commit -m "Add some amazing feature"
+```
 
+5. Push to your fork:
+
+```bash
+git push origin feature/amazing-feature
+```
+
+6. Open a Pull Request and describe your changes
 
 ## 📜 License
+
 This project is open-source and available under the **MIT License**.
