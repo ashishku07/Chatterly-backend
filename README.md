@@ -89,4 +89,29 @@ npm run dev
 
 ### 🤖 AI Assistant
 
-- **POST** `/api/ai-assistant` – Get AI assistance  
+- **POST** `/api/ai-assistant` – Get AI assistance
+
+### 🔐 Security
+
+- Password hashing using bcrypt
+- JWT-based authentication
+- CORS protection
+- Input validation
+- Rate limiting
+- Environment variable protection
+
+---
+
+## 🌐 Frontend Integration
+
+This backend is built to work seamlessly with the [DevTinder Frontend](https://github.com/Shams261/DevTinder-frontend) built using **React (Vite)**, **Tailwind CSS**, and **DaisyUI**.
+
+## 📘 Learning Resources
+
+This backend project was built while learning from:
+
+- [Namaste Node.js by Akshay Saini ](https://namastedev.com/learn/namaste-node)
+A highly recommended series for understanding Node.js fundamentals and backend architecture.
+
+## 📜 License
+This project is open-source and available under the **MIT License**.
