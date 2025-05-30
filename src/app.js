@@ -33,6 +33,7 @@ const userRouter = require("./routes/user");
 const initializeSocket = require("./utils/socket");
 const chatRouter = require("./routes/chat");
 const smartMatchRouter = require("./routes/smartMatch");
+const aiAssistantRouter = require("./routes/aiAssistant");
 
 app.use("/", authRouter);
 app.use("/", profileRouter);
@@ -40,6 +41,7 @@ app.use("/", requestRouter);
 app.use("/", userRouter);
 app.use("/api", chatRouter);
 app.use("/api", smartMatchRouter);
+app.use("/api", require("./routes/aiAssistant"));
 
 const server = http.createServer(app);
 initializeSocket(server);
