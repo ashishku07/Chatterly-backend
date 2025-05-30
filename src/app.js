@@ -38,7 +38,7 @@ app.use("/", authRouter);
 app.use("/", profileRouter);
 app.use("/", requestRouter);
 app.use("/", userRouter);
-app.use("/", chatRouter);
+app.use("/api", chatRouter);
 app.use("/api", smartMatchRouter);
 
 const server = http.createServer(app);
