@@ -113,5 +113,27 @@ This backend project was built while learning from:
 - [Namaste Node.js by Akshay Saini ](https://namastedev.com/learn/namaste-node)
 A highly recommended series for understanding Node.js fundamentals and backend architecture.
 
+## 🤝 Contributing
+
+Contributions are welcome! If you'd like to improve this project, follow these steps:
+
+1. **Fork** the repository  
+2. **Clone** your fork locally  
+3. Create your feature branch:  
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+4.	Make your changes and commit:
+   ```bash
+   git commit -m "Add some amazing feature"
+   ```
+5.	Push to your fork:
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+
+  6.	Open a Pull Request and describe your changes
+
+
 ## 📜 License
 This project is open-source and available under the **MIT License**.
