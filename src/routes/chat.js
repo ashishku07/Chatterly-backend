@@ -24,7 +24,7 @@ chatRouter.get("/chat/:targetUserId", userAuth, async (req, res) => {
       await chat.save();
     }
 
-    // ✅ Send only messages array to the frontend
+    //  Send only messages array to the frontend
     res.json({ messages: chat.messages });
   } catch (err) {
     console.error(err);
