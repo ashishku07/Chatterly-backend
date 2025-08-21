@@ -13,7 +13,7 @@ const openai = new OpenAI({
 router.post("/ai-assistant", async (req, res) => {
   const { message } = req.body;
 
-  // ✅ Validate request
+  //  Validate request
   if (!message) {
     return res.status(400).json({ error: "Message is required" });
   }
@@ -21,14 +21,14 @@ router.post("/ai-assistant", async (req, res) => {
   let userId = null;
   let user = null;
 
-  // ✅ Decode token from cookies if available
+  //  Decode token from cookies if available
   try {
     const token = req.cookies?.token;
     if (token) {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       userId = decoded.userId;
 
-      // ✅ Fetch user data from DB
+      //  Fetch user data from DB
       user = await User.findById(userId).select(
         "firstName lastName skills about"
       );
@@ -38,14 +38,14 @@ router.post("/ai-assistant", async (req, res) => {
   }
 
   try {
-    // ✅ Build user context
+    //  Build user context
     const userContext = user
       ? `User Info → Name: ${user.firstName} ${user.lastName}, Skills: ${
           user.skills?.join(", ") || "N/A"
         }, About: ${user.about || "N/A"}.\n`
       : "";
 
-    // ✅ Call OpenAI with personalization
+    //  Call OpenAI with personalization
     const chatResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       max_tokens: 150,
