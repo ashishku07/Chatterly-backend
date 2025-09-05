@@ -2,15 +2,11 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    if (!process.env.MONGO_URI) {
-      throw new Error("❌ MONGO_URI not found in environment variables");
-    }
-
+    console.log("🔑 MONGO_URI:", process.env.MONGO_URI); // Debug print
     await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-
     console.log("✅ MongoDB connected Successfully");
   } catch (err) {
     console.error("❌ MongoDB connection error:", err.message);
@@ -18,4 +14,5 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
+
 
