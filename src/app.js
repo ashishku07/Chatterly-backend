@@ -26,6 +26,9 @@ app.use(express.json());
 app.use(cookieParser());
 
 //routes
+app.get("/", (req, res) => {
+  res.send("🚀 Backend is running successfully!");
+});
 const authRouter = require("./routes/auth");
 const profileRouter = require("./routes/profile");
 const requestRouter = require("./routes/request");
