@@ -25,6 +25,8 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
+
+
 //routes
 app.get("/", (req, res) => {
   res.send("🚀 Backend is running successfully!");
@@ -37,6 +39,7 @@ const initializeSocket = require("./utils/socket");
 const chatRouter = require("./routes/chat");
 const smartMatchRouter = require("./routes/smartMatch");
 const aiAssistantRouter = require("./routes/aiAssistant");
+axios.get(`${import.meta.env.VITE_API_URL}/login`, { withCredentials: true })
 
 app.use("/", authRouter);
 app.use("/", profileRouter);
